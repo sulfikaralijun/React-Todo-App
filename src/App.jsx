@@ -40,7 +40,7 @@ const App = () => {
   }
 
   return (
-    <div className="min-h-dvh py-12 flex items-center justify-center bg-gray-100">
+    <div className="min-h-dvh py-12 px-5 flex items-center justify-center bg-gray-100">
       <div className="flex flex-col gap-5 max-w-md w-full">
         <h1 className="text-3xl font-semibold text-center">Todo App</h1>
         <form onSubmit={addNewTodo} className="flex gap-1.5">
