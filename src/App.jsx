@@ -18,7 +18,7 @@ const App = () => {
     setTodos((prev) => [
       ...prev,
       {
-        id: Date().getTime().toString(),
+        id: new Date().getTime().toString(),
         text: newTodo,
         isComplete: false,
       },
