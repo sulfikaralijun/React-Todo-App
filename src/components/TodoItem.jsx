@@ -6,10 +6,10 @@ const TodoItem = ({id, text, isComplete, onToggleComplete, onDelete}) => {
     <div className="flex p-3 justify-between items-center bg-white rounded-md shadow">
       <p className={isComplete ? 'line-through' : ''}>{text}</p>
       <div className="flex gap-2">
-        <button className="py-2.5 px-3 hover:bg-gray-100 rounded-md" onClick={() => onToggleComplete(id)}>
+        <button className="py-2.5 px-3 hover:bg-gray-100 rounded-md cursor-pointer" onClick={() => onToggleComplete(id)}>
           { isComplete ? <X size={16} color="red"/> : <Check size={16} color="green"/>}
         </button>
-        <button className="py-2.5 px-3 hover:bg-gray-100 rounded-md" onClick={() => onDelete(id)}>
+        <button className="py-2.5 px-3 hover:bg-gray-100 rounded-md cursor-pointer" onClick={() => onDelete(id)}>
           <Trash2 size={16} color="red"/>
         </button>
       </div>
