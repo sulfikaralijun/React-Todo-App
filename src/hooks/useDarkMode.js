@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 
 export default function useDarkMode() {
-  const [isDarkMode, setIsDarkMode] = useState(
-    () =>
-      JSON.parse(localStorage.getItem("darkMode")) ||
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-  );
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const darkModeFromLC = localStorage.getItem("darkMode");
+    if (darkModeFromLC) {
+      return JSON.parse(darkModeFromLC);
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
 
   useEffect(() => {
     if (isDarkMode) {
@@ -13,13 +15,12 @@ export default function useDarkMode() {
     } else {
       document.documentElement.classList.remove("dark");
     }
-    localStorage.setItem('darkMode', JSON.stringify(isDarkMode))
+    localStorage.setItem("darkMode", JSON.stringify(isDarkMode));
   }, [isDarkMode]);
 
-  function toggleDarkMode(){
-    setIsDarkMode(prev => !prev)
+  function toggleDarkMode() {
+    setIsDarkMode((prev) => !prev);
   }
 
-  return [isDarkMode, toggleDarkMode]
-
+  return [isDarkMode, toggleDarkMode];
 }
